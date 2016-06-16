@@ -1,4 +1,5 @@
 ﻿using com.valgut.libs.bots.Wit.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -17,6 +18,11 @@ namespace com.valgut.libs.bots.Wit
 
         private string authValue;
 
+
+        /// <summary>
+        /// Inits the Wit.ai client
+        /// </summary>
+        /// <param name="token">Your app token, which can be found under Settings in the Wit console</param>
         public WitClient(string token)
         {
             authValue = "Bearer " + token;
@@ -27,10 +33,9 @@ namespace com.valgut.libs.bots.Wit
         /// </summary>
         /// <see cref="https://wit.ai/docs/http/20160526#get--message-link"/>
         /// <param name="q">User’s query. Length must be &gt; 0 and &lt; 256</param>
-        /// <param name="context">context object</param>
         /// <param name="msg_id">A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you</param>
         /// <param name="thread_id">A specific Id that will let you group requests per conversation</param>
-        public Message GetMessage(string q, JObject context = null, string msg_id = null, string thread_id = null)
+        public Message GetMessage(string q, string msg_id = null, string thread_id = null)
         {
             var client = new RestClient("https://api.wit.ai");
 
@@ -48,7 +53,40 @@ namespace com.valgut.libs.bots.Wit
             IRestResponse response = client.Execute(request);
             var content = response.Content;
 
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Message>(content);
+            return JsonConvert.DeserializeObject<Message>(content);
+        }
+
+        /// <summary>
+        /// Returns what your bot should do next. The next step can be either answering to the user, performing an action, or waiting for further requests.
+        /// </summary>
+        /// <param name="session_id">Unique ID to group messages from the same user request/conversation.</param>
+        /// <param name="q">A message from the user. This should only be set at the first step</param>
+        /// <param name="context">The object representing the session state.</param>
+        /// <returns></returns>
+        public ConverseResponse Converse(string session_id, string q = null, object context = null)
+        {
+            var client = new RestClient("https://api.wit.ai");
+
+            var request = new RestRequest("converse", Method.POST);
+            request.AddQueryParameter("v", DEFAULT_API_VERSION);
+            request.AddQueryParameter("session_id", session_id);
+            if (q != null)
+                request.AddQueryParameter("q", q);
+
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Authorization", authValue);
+
+            if (context != null)
+            {
+                request.AddHeader("Content-Type", "application/json");
+                request.AddJsonBody(context);
+            }
+
+            // execute the request
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            return JsonConvert.DeserializeObject<ConverseResponse>(content);
         }
     }
 }
