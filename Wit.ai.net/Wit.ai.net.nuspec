@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/valencianok/Wit.ai.net/blob/master/Wit.ai.net/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/valencianok/Wit.ai.net</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Version 0.1.0: First public package.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>wit.ai bot</tags>
+  </metadata>
+</package>
