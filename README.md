@@ -11,41 +11,46 @@ A .Net client for Wit.ai HTTP API
 
 ### Simple Message example
 ```csharp
-WitClient client = new WitClient(Properties.Settings.Default.WitToken);
-Message message = client.GetMessage("hello");client.DownloadData(request).SaveAs(path);
+WitClient client = new WitClient(witToken);
+Message message = client.GetMessage("hello");
 ```
 
 ### Conversation example
 ```csharp
 public void example()
 {
-    WitConversation client = new WitConversation(Properties.Settings.Default.WitToken, conversationId, doMerge, doSay, doAction, doStop);
+    var client = new WitConversation<DemoContext>(witToken, conversationId, null,
+        doMerge, doSay, doAction, doStop);
     Task<bool> t = client.SendMessageAsync("hello");
     t.Wait();
-    // do something
+
+    Assert.IsTrue(t.Result && didMerge && didStop);
 }
 
-public object doMerge(string conversationId, object context, object entities, double confidence)
+public DemoContext doMerge(string conversationId, DemoContext context, object entities, double confidence)
 {
-    // do something
+    didMerge = true;
     return context;
 }
 
-public void doSay(string conversationId, object context, string msg, double confidence)
+public void doSay(string conversationId, DemoContext context, string msg, double confidence)
 {
-    // do something
-    // Console.WriteLine(msg);
+    Console.WriteLine(msg);
 }
 
-public object doAction(string conversationId, object context, string action, double confidence)
+public DemoContext doAction(string conversationId, DemoContext context, string action, double confidence)
 {
-    // do something
     return context;
 }
 
-public object doStop(string conversationId, object context)
+public DemoContext doStop(string conversationId, DemoContext context)
 {
-    // do something
+    didStop = true;
     return context;
+}
+
+public class DemoContext
+{
+    public string someField { get; set; }
 }
 ```

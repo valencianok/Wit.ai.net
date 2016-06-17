@@ -7,23 +7,24 @@ using System.Threading.Tasks;
 
 namespace com.valgut.libs.bots.Wit
 {
-    public class WitConversation
+    public class WitConversation<T>
     {
         WitClient client = null;
         string conversationId = null;
-        object context = null;
+        T context = default(T);
 
-        public delegate object MergeHandler(string conversationId, object context, object entities, double confidence);
-        public delegate void SayHandler(string conversationId, object context, string msg, double confidence);
-        public delegate object ActionHandler(string conversationId, object context, string action, double confidence);
-        public delegate object StopHandler(string conversationId, object context);
+        public delegate T MergeHandler(string conversationId, T context, Dictionary<string, List<Entity>> entities, double confidence);
+        public delegate void SayHandler(string conversationId, T context, string msg, double confidence);
+        public delegate T ActionHandler(string conversationId, T context, string action, double confidence);
+        public delegate T StopHandler(string conversationId, T context);
 
         MergeHandler _merge;
         SayHandler _say;
         ActionHandler _action;
         StopHandler _stop;
 
-        public WitConversation(string token, string conversationId, MergeHandler merge, SayHandler say, ActionHandler action, StopHandler stop)
+        public WitConversation(string token, string conversationId, T initialContext, 
+            MergeHandler merge, SayHandler say, ActionHandler action, StopHandler stop)
         {
             if (token == null || conversationId == null || merge == null || say == null || action == null)
                 throw new Exception("Please check WitConversation constructor parameters.");
@@ -34,6 +35,7 @@ namespace com.valgut.libs.bots.Wit
             _say = say;
             _action = action;
             _stop = stop;
+            context = initialContext;
         }
 
         public Task<bool> SendMessageAsync(string q)
@@ -49,7 +51,7 @@ namespace com.valgut.libs.bots.Wit
         private bool recurringConverse(ConverseResponse prevResponse)
         {
             bool doOneMoreStep = false;
-            object tempContext = null;
+            T tempContext = default(T);
             switch (prevResponse.typeCode)
             {
                 case ConverseResponse.Types.merge:
