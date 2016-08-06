@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using com.valgut.libs.bots.Wit;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using com.valgut.libs.bots.Wit.Models;
 
 namespace Wit.ai.net.Tests
 {
@@ -22,7 +24,7 @@ namespace Wit.ai.net.Tests
             Assert.IsTrue(t.Result && didMerge && didStop);
         }
 
-        public object doMerge(string conversationId, object context, object entities, double confidence)
+        public object doMerge(string conversationId, object context, Dictionary<string, List<Entity>> entities, double confidence)
         {
             didMerge = true;
             return context;
@@ -33,7 +35,7 @@ namespace Wit.ai.net.Tests
             Console.WriteLine(msg);
         }
 
-        public object doAction(string conversationId, object context, string action, double confidence)
+        public object doAction(string conversationId, object context, string action, Dictionary<string, List<Entity>> entities, double confidence)
         {
             return context;
         }
