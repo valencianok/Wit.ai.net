@@ -7,11 +7,12 @@ A .Net client for Wit.ai HTTP API
 * Supports .NET 4.5+
 * Easy installation using [NuGet](http://nuget.org/packages/Wit.ai.net) 
 
+
 ## Code Samples
 
 ### Simple Message example
 ```csharp
-WitClient client = new WitClient(witToken);
+WitClient client = new WitClient("YOUR_WIT_TOKEN");
 Message message = client.GetMessage("hello");
 ```
 
@@ -27,7 +28,7 @@ public void example()
     Assert.IsTrue(t.Result && didMerge && didStop);
 }
 
-public DemoContext doMerge(string conversationId, DemoContext context, object entities, double confidence)
+public DemoContext doMerge(string conversationId, DemoContext context, Dictionary<string, List<Entity>> entities, double confidence)
 {
     didMerge = true;
     return context;
@@ -38,7 +39,7 @@ public void doSay(string conversationId, DemoContext context, string msg, double
     Console.WriteLine(msg);
 }
 
-public DemoContext doAction(string conversationId, DemoContext context, string action, double confidence)
+public DemoContext doAction(string conversationId, DemoContext context, string action, Dictionary<string, List<Entity>> entities, double confidence)
 {
     return context;
 }

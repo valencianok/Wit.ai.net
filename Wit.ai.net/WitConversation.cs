@@ -15,7 +15,7 @@ namespace com.valgut.libs.bots.Wit
 
         public delegate T MergeHandler(string conversationId, T context, Dictionary<string, List<Entity>> entities, double confidence);
         public delegate void SayHandler(string conversationId, T context, string msg, double confidence);
-        public delegate T ActionHandler(string conversationId, T context, string action, double confidence);
+        public delegate T ActionHandler(string conversationId, T context, string action, Dictionary<string, List<Entity>> entities, double confidence);
         public delegate T StopHandler(string conversationId, T context);
 
         MergeHandler _merge;
@@ -63,7 +63,7 @@ namespace com.valgut.libs.bots.Wit
                     doOneMoreStep = true;
                     break;
                 case ConverseResponse.Types.action:
-                    tempContext = _action.Invoke(conversationId, context, prevResponse.action, prevResponse.confidence);
+                    tempContext = _action.Invoke(conversationId, context, prevResponse.action, prevResponse.entities, prevResponse.confidence);
                     doOneMoreStep = true;
                     break;
                 case ConverseResponse.Types.stop:
