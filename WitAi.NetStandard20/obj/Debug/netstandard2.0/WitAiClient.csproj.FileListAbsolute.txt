@@ -1,0 +1,9 @@
+C:\Users\macek\source\repos\MacikHome\WitAiClient\bin\Debug\netstandard2.0\WitAiClient.deps.json
+C:\Users\macek\source\repos\MacikHome\WitAiClient\bin\Debug\netstandard2.0\WitAiClient.dll
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.csprojResolveAssemblyReference.cache
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.csproj.CoreCompileInputs.cache
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.AssemblyInfoInputs.cache
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.AssemblyInfo.cs
+C:\Users\macek\source\repos\MacikHome\WitAiClient\bin\Debug\netstandard2.0\WitAiClient.pdb
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.dll
+C:\Users\macek\source\repos\MacikHome\WitAiClient\obj\Debug\netstandard2.0\WitAiClient.pdb
