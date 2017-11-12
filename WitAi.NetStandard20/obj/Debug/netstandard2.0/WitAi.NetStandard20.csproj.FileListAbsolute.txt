@@ -1,0 +1,8 @@
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\bin\Debug\netstandard2.0\WitAi.NetStandard20.deps.json
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\bin\Debug\netstandard2.0\WitAi.NetStandard20.dll
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\bin\Debug\netstandard2.0\WitAi.NetStandard20.pdb
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\obj\Debug\netstandard2.0\WitAi.NetStandard20.csproj.CoreCompileInputs.cache
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\obj\Debug\netstandard2.0\WitAi.NetStandard20.AssemblyInfoInputs.cache
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\obj\Debug\netstandard2.0\WitAi.NetStandard20.AssemblyInfo.cs
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\obj\Debug\netstandard2.0\WitAi.NetStandard20.dll
+C:\Users\macek\source\repos\Wit.ai.net\WitAi.NetStandard20\obj\Debug\netstandard2.0\WitAi.NetStandard20.pdb
