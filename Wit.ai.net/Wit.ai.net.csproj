@@ -2,16 +2,16 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netstandard2.0;</TargetFrameworks>
     <RootNamespace>com.valgut.libs.bots.Wit</RootNamespace>
+    <AssemblyName>Wit.Ai.Net</AssemblyName>
     <Title>Wit.Ai.Net</Title>
     <Product>Wit.Ai.Net</Product>
     <PackageId>Wit.Ai.Net</PackageId>
     <Description>A .Net client for Wit.ai HTTP API</Description>
     <Company>ValGut.com</Company>
-    <Authors>$author$</Authors>
+    <Authors>ValGut.com</Authors>
     <Copyright>Copyright 2016</Copyright>
     <Product>Wit.ai.net</Product>
     <Version>0.1.1</Version>
-    <ProjectGuid>8d86965e-03fe-44b6-b55f-685849c3d68e</ProjectGuid>
     <FileVersion>0.1.1</FileVersion>
     <PackageVersion>0.1.1</PackageVersion>
     <AssemblyVersion>0.1.1</AssemblyVersion>
@@ -22,6 +22,8 @@
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <RequireLicenseAcceptance>true</RequireLicenseAcceptance>
+    <ReleaseNotes>Version 0.1.0: First public package.</ReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="**\*.orig" />
@@ -51,8 +53,5 @@
     <AssemblyName>Wit.Ai.NetStandard</AssemblyName>
     <AssemblyTitle>Wit.Ai.NetStandard</AssemblyTitle>
     <DefineConstants>NETSTANDARD2_0</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
+  </PropertyGroup>    
 </Project>

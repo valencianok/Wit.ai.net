@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>$id$</id>
-    <owners>$author$</owners>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <releaseNotes>Version 0.1.0: First public package.</releaseNotes>
-  </metadata>
-</package>
