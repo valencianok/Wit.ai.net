@@ -5,6 +5,7 @@ A .Net client for Wit.ai HTTP API
 ## Features
 
 * Supports .NET 4.5+
+* Supports .NET Standard 2.0
 * Easy installation using [NuGet](http://nuget.org/packages/Wit.ai.net) 
 
 
