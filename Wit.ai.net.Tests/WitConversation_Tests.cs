@@ -4,6 +4,10 @@ using com.valgut.libs.bots.Wit;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using com.valgut.libs.bots.Wit.Models;
+using System.Configuration;
+using System.Xml.Linq;
+using System.IO;
+using System.Linq;
 
 namespace Wit.ai.net.Tests
 {
@@ -17,8 +21,16 @@ namespace Wit.ai.net.Tests
         [TestMethod]
         public void WitConversation_Conversation_Test()
         {
-            var client = new WitConversation<DemoContext>(Properties.Settings.Default.WitToken, conversationId, null,
-                doMerge, doSay, doAction, doStop);
+            var appConfigContent = File.ReadAllText("../../../app.config");
+            var witToken = XElement.Parse(appConfigContent)
+                                .Element(XName.Get("applicationSettings"))
+                                .Element(XName.Get("Wit.ai.net.Tests.Properties.Settings"))
+                                .Elements(XName.Get("setting"))
+                                .First(e => e.Attribute("name")?.Value == "WitToken")
+                                .Value;
+
+            var client = new WitConversation<DemoContext>(witToken, conversationId, null,doMerge, doSay, doAction, doStop);
+
             Task<bool> t = client.SendMessageAsync("hello");
             t.Wait();
 
